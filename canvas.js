@@ -6,6 +6,13 @@ var canvas = $('#canvas'),
     xd = 2.5, yd = 2, xc = -0.5, yc = -0.5, maxiter = 100, globaliter = 0,
     startTime = +new Date();
     
+$("#maxiter").value = maxiter;
+$("label[for*=maxiter]").innerHTML = maxiter;
+$("#maxiter").onchange = function() {
+    maxiter = this.value;
+    $("label[for*=maxiter]").innerHTML = this.value;
+}
+    
 function $(query) {
     var el = document.querySelectorAll(query);
     return (el.length == 1) ? el[0] : el;
@@ -39,7 +46,7 @@ function setPixel(x,y,c) {
 
 function animate() {
     var time = (+new Date()) - startTime;
-    $("h1 i").innerHTML = Math.round(1000 / time, 3) + "fps";
+    $("h1 i").innerHTML = Number(1000 / time).toFixed(2) + " fps";
     startTime = +new Date();
     
     for (x = 0; x < canvas.width; x++) {
@@ -55,14 +62,15 @@ function animate() {
         ctx.putImageData(imgd, 0, 0);
         xd -= 0.1;
         yd -= 0.1;
-        // xc += 0.1;
+        xc += 0.001;
         animate();
     }, 40);
 }
 
-$("#stop").onclick = function() {
-    alert('klik');
-    clearTimeout(timer);
+$("#start").onclick = function() {
+    animate();
 }
 
-animate();
+$("#stop").onclick = function() {
+    clearTimeout(timer);
+}

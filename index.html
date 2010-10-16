@@ -10,10 +10,15 @@
     </style>
 </head>
 <body>
-<h1>Mandelbrot iteration <b>0</b> <i>...</i></h1>
+<h1>Mandelbrot iteration <b>0</b> <i>…</i></h1>
 <canvas id="canvas" width="600" height="400">You don't have support for the &lt;canvas&gt; tag :(</canvas>
 <br />
+<button id="start">Start</button>
 <button id="stop">Stop</button>
+
+<input id="maxiter" type="range" min="0" max="200" step="1" />
+<label for="maxiter"></label>
+
 <script src="canvas.js"></script>
 </body>
 </html>

@@ -40,8 +40,7 @@ window.App = {
             var worker = new Worker('worker.js');
             worker.postMessage(App.config);
             worker.onmessage = function(event) {
-                console.log('data', event.data);
-                // px = event.data;
+                px = event.data;
             }
 
             globaliter++;
@@ -53,7 +52,7 @@ window.App = {
                 yd -= 0.1;
                 xc -= 0.05;
                 yc -= 0.05;
-                // animate();
+                animate();
             }, 40);
         }
 

@@ -7,10 +7,10 @@ var canvas = $('#canvas'),
     startTime = +new Date();
     
 $("#maxiter").value = maxiter;
-$("label[for*=maxiter]").innerHTML = maxiter;
+$("output[for*=maxiter]").innerHTML = maxiter;
 $("#maxiter").onchange = function() {
     maxiter = this.value;
-    $("label[for*=maxiter]").innerHTML = this.value;
+    $("output[for*=maxiter]").innerHTML = this.value;
 }
     
 function $(query) {
@@ -62,7 +62,8 @@ function animate() {
         ctx.putImageData(imgd, 0, 0);
         xd -= 0.1;
         yd -= 0.1;
-        xc += 0.001;
+        xc -= 0.05;
+        yc -= 0.05;
         animate();
     }, 40);
 }
